@@ -5,7 +5,7 @@ module Cramp
 
     def initialize(env)
       super
-      
+
       if Faye::WebSocket.websocket?(env)
         @web_socket = Faye::WebSocket.new(env)
         @web_socket.onmessage = lambda do |event|

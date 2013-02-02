@@ -57,7 +57,9 @@ module Cramp
         begin
           yield
         rescue StandardError, LoadError, SyntaxError => exception
-          handle_exception(exception)
+          # handle_exception(exception)
+          log.fatal "[event=crash] #{exception.backtrace[0..2].map { |l| "\t#{l}" }.join("-------")}"
+
         end
       end
     end
